@@ -1,38 +1,455 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #fff; /* wireframe background */
+  color: #333;
+  position: relative;
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header */
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap; /* ✅ allows wrapping on smaller screens */
+  background: #f0f4f8; /* ✅ soft grey like support box */
+  color: #333;
+  padding: 15px 30px;
+  position: sticky; /* ✅ sticky header */
+  top: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header h1 .northstar {
+  color: #2e7d32; /* ✅ green for NORTHSTAR */
+}
+
+.header h1 .retail {
+  color: #333; /* ✅ grey like LOGIN/SIGN UP */
+}
+
+/* ✅ New subtitle under company name */
+.portal-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* ✅ Star styling */
+.logo-area {
+  display: flex;
+  flex-direction: row;   /* ✅ side by side instead of stacked */
+  align-items: center;   /* ✅ vertically align star with text */
+  gap: 8px;              /* ✅ space between star and text */
+}
+
+.star-icon {
+  margin-bottom: 0;      /* remove bottom margin since it’s beside now */
+}
+
+/* Search bar styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  border: 2px solid #2e7d32;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+.search-bar button {
+  background: #2e7d32;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar button:hover {
+  background: #1b5e20;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Navigation */
+.header ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* ✅ nav items wrap on mobile */
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.header li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header li:hover {
+  color: #2e7d32; /* ✅ green hover for nav links */
+}
+
+/* Hamburger menu toggle */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links.open {
+  display: block;
+  flex-direction: column;
+  background: #f0f4f8;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Main grid */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 30px;
+  text-align: center;
+  position: relative;
+}
+
+/* Intro section spans both columns */
+.intro {
+  grid-column: span 2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border: 2px solid #2e7d32; /* ✅ green accent border */
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2); /* ✅ soft green shadow */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.3); /* stronger green shadow on hover */
+}
+
+.card h2 {
+  margin-top: 15px;
+  font-size: 1.4rem;
+}
+
+.card p {
+  margin: 10px 0 20px;
+  color: #666;
+}
+
+/* Buttons */
+button {
+  background: #2e7d32; /* ✅ green buttons */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #1b5e20; /* darker green on hover */
+}
+
+/* Support section */
+.support {
+  grid-column: span 2; /* full width under both cards */
+  background: #f0f4f8; /* ✅ soft grey */
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 2px solid #2e7d32; /* ✅ green accent border */
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15); /* ✅ subtle green shadow */
+}
+
+.support h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.support p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Track Order form */
+.track-order {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.track-order form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.track-order input {
+  padding: 12px;
+  border: 2px solid #2e7d32;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%; /* ✅ full width inputs */
+  box-sizing: border-box;
+}
+
+.track-order button {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.track-order button:hover {
+  background: #1b5e20;
+}
+
+/* Order Status Stepper */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 800px;
+  position: relative;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: lightgray;
+  margin: 0 auto;
+  line-height: 35px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.step.active .circle {
+  background: #2e7d32;
+}
+
+.step p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Connecting line between steps */
+.stepper::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: lightgray;
+  z-index: 0;
+}
+
+.step.active ~ .step .circle {
+  background: lightgray;
+}
+
+.step.active .circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #2e7d32;
+}
+
+/* Refund Stepper (same style as order stepper) */
+.refund-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 800px;
+  position: relative;
+}
+
+.refund-stepper::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: lightgray;
+  z-index: 0;
+}
+
+.refund-stepper .step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.refund-stepper .circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: lightgray;
+  margin: 0 auto;
+  line-height: 35px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.refund-stepper .step.active .circle {
+  background: #2e7d32;
+}
+
+.refund-stepper .step p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ✅ Responsive layout for mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* ✅ stack logo and nav */
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header ul {
+    margin-top: 10px;
+    gap: 15px;
+  }
+
+  .menu-toggle {
+    display: block; /* ✅ show hamburger on mobile */
+  }
+
+  .nav-links {
+    display: none; /* ✅ hide nav by default */
+    width: 100%;
+  }
+
+  .nav-links.open {
+    display: flex; /* ✅ show when toggled */
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .search-bar input {
+    flex: 1;
+    width: 100%;
+  }
+
+  main {
+    grid-template-columns: 1fr; /* stack cards vertically */
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .intro {
+    grid-column: span 1;
+  }
+
+  .support {
+    grid-column: span 1;
+  }
+
+  button {
+    padding: 16px 30px;
+    font-size: 1rem;
+    width: 100%; /* ✅ full width buttons */
+  }
+
+  .card {
+    width: 100%; /* ✅ full width cards */
+  }
+
+  .stepper,
+  .refund-stepper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stepper::before,
+  .refund-stepper::before {
+    display: none; /* hide connecting lines on mobile */
+  }
+
+  .star-icon {
+    font-size: 20px; /* ✅ smaller star on mobile */
   }
 }
+
+
+
+
+
+
+
+
+
+
