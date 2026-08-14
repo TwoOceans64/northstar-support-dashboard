@@ -60,12 +60,15 @@ northstar-support-dashboard/
 
 ---
 
-👥 Team Roles
-- Team Lead: Represents team to sponsor, manages communication.
-- Project Manager(s): Track timelines, assign tasks, monitor deliverables.
-- Project Lead: Guides technical direction, enforces deadlines.
-- Scribes: Document meetings, maintain repo records.
-- All Members: Contribute actively, complete tasks, provide feedback.
+## 👥 Contributors
+
+| Name            | Email                        |
+|-----------------|------------------------------|
+| Michaela Browers | jmbrowers93@gmail.com        |
+| Samuel Kamau     | samksam600@gmail.com         |
+| Hillary Bravon   | wekesahillary30@gmail.com    |
+| Lewis Ntabo      | lewisntabo12@gmail.com       |
+| Sesona Silo      | seso.silo22@gmail.com        |
 
 ---
 
