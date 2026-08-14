@@ -53,6 +53,52 @@ async def get_order(order_id: str, email: str):
         conn.close()
 
 
+@app.post("/api/returns/{order_id}")
+async def request_return(order_id: str, email: str):
+    """
+    Request a return for an eligible order.
+
+    Args:
+        order_id: The order ID to return
+        email: The customer email for verification
+
+    Returns:
+        Dictionary confirming the return request was submitted
+
+    Raises:
+        HTTPException: 404 if order not found, 401 if email doesn't match,
+            400 if the item is not return eligible
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(
+            "SELECT customer_email, return_eligible FROM orders WHERE order_id = ?",
+            (order_id,)
+        )
+        order = cursor.fetchone()
+
+        if order is None:
+            raise HTTPException(status_code=404, detail="Order not found")
+
+        if order["customer_email"] != email:
+            raise HTTPException(status_code=401, detail="Unauthorized")
+
+        if not order["return_eligible"]:
+            raise HTTPException(status_code=400, detail="Item cannot be returned")
+
+        cursor.execute(
+            "UPDATE orders SET return_status = ? WHERE order_id = ?",
+            ("requested", order_id)
+        )
+        conn.commit()
+
+        return {"message": "Return requested successfully"}
+    finally:
+        conn.close()
+
+
 if __name__ == "__main__":
     import uvicorn
 
