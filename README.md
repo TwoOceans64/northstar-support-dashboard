@@ -28,7 +28,7 @@ northstar-support-dashboard/
 ##🛠️ Setup Instructions
 1. Clone the repo:
    `bash
-   git clone https://github.com/<your-org>/northstar-support-dashboard.git
+   git clone https://github.com/TwoOceans64/northstar-support-dashboard.git
    `
 2. Install dependencies:
    `bash
