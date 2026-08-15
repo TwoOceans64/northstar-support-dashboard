@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   turbopack: {
-    root: "./Frontend/my-app",
+    // Use an absolute path so Vercel doesn’t duplicate folders
+    root: path.resolve(__dirname, "Frontend/my-app"),
   },
 };
 
